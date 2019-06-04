@@ -1,0 +1,126 @@
+<h2>Saisissez un mouvement de sortie à l'aide du formulaire suivant</h2>
+
+<form [formGroup]="form">
+
+
+
+    <div class="form-div">
+        <div class="form-div" class="form-group row row-enbref">
+         <label for="titre" class="form-label">Magasin de destination<i title="Champ obligatoire"></i></label>
+          <select name="magasinDestination" size="1" formControlName="magasinDestination">
+            <option value="Fedex">Fedex</option>
+            <option value="Google">Google</option>
+            <option value="Darty">Darty</option>
+         </select>
+        </div>
+       </div>
+
+       
+       <div class="form-div">
+        <div class="form-div" class="form-group row row-enbref">
+          <label for="typeReference" class="form-label">Reference<i title="Champ obligatoire"></i></label>
+              
+              <select name="typeReference" size="1" formControlName="typeReference">
+                  <option value="AAA">AAA</option>
+                  <option value="AWB">AWB</option>
+                  <option value="CDC">CDC</option>
+              </select>
+              <div class="form-div" class="form-group row row-enbref">
+                  <input maxlength="120" type="text" title="Saisir un titre pour accéder aux autres rubriques de la fiche"
+                    id="reference" formControlName="reference" />
+              </div>
+        </div>
+    </div>
+
+    <div *ngIf="referenceError">
+        <div class="alert alert-danger">
+          La référence doit contenir 11 caractères lorsque vous avez selectionné 'AWB'
+        </div>
+      </div>
+
+    
+ 
+
+    <div class="form-div">
+      <div class="form-div" class="form-group row row-enbref">
+       <label for="titre" class="form-label">Statut douanier<i title="Champ obligatoire"></i></label>
+         <!-- <input maxlength="120" type="text" title="Saisir un titre pour accéder aux autres rubriques de la fiche"
+           id="titre" formControlName="statutDouanier" /> -->
+           <select name="statutDouanier" size="1" formControlName="statutDouanier">
+               <option value="T1">T1</option>
+               <option value="T2">T2</option>
+               <option value="T3">T3</option>
+           </select>
+      </div>
+     </div>
+
+
+    <div class="form-div">
+       <div class="form-div" class="form-group row row-enbref">
+        <label for="description" class="form-label">Nature de la marchandise <i title="Champ obligatoire"></i></label>
+          <input class="inp" maxlength="120" type="text" title="Saisir un titre pour accéder aux autres rubriques de la fiche"
+            id="titre" formControlName="description" />
+      </div>
+    </div>
+
+
+  <div class="form-div">    
+     <div class="form-div" class="form-group row row-enbref">
+      <label for="quantite" class="form-label">Quantite <i title="Champ obligatoire"></i></label>
+        <input class="inp" maxlength="120" type="text" title="Saisir un titre pour accéder aux autres rubriques de la fiche"
+          id="titre" formControlName="quantite" />
+    </div>
+  </div>
+
+
+    <div class="form-div">
+      <div class="form-div" class="form-group row row-enbref">
+      <label for="quantiteTotale" class="form-label">Quantite totale <i title="Champ obligatoire"></i></label>
+        <input class="inp" maxlength="120" type="text" title="Saisir un titre pour accéder aux autres rubriques de la fiche"
+          id="titre" formControlName="quantiteTotale" />
+     </div>
+    </div>
+
+    <div *ngIf="quantiteError">
+        <div class="alert alert-danger">
+          La quantité est supérieure à la quantité totale
+        </div>
+      </div>
+
+
+
+<div class="form-div">
+  <div class="form-div" class="form-group row row-enbref">
+      <label for="poids" class="form-label">Poids<i title="Champ obligatoire"></i></label>
+        <input class="inp" maxlength="120" type="text" title="Saisir un titre pour accéder aux autres rubriques de la fiche"
+          id="titre" formControlName="poids" />
+    </div>
+  </div>
+
+  <div class="form-div">
+    <div class="form-div" class="form-group row row-enbref">
+      <label for="poidsTotal" class="form-label">Poids Total <i title="Champ obligatoire"></i></label>
+        <input class="inp" maxlength="120" type="text" title="Saisir un titre pour accéder aux autres rubriques de la fiche"
+          id="titre" formControlName="poidsTotal" />
+    </div>
+  </div>
+
+  <div *ngIf="poidsError">
+      <div class="alert alert-danger">
+        Le poids est supérieur au poids total
+      </div>
+    </div>
+        
+        
+       
+
+
+</form>
+
+<div class="col col-6 text-md-right text-center pl-0">
+    <hr>
+    <button type="button" class="btn btn-outline-primary btn-uppercase" (click)="annuler()">Annuler</button>
+    <button type="button" class="btn btn-primary" (click)="sendMouvementSortieForm()" [disabled]="!form.valid">Envoyer</button>
+  </div>
+
+

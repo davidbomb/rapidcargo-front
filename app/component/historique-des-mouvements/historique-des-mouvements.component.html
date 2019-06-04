@@ -1,0 +1,31 @@
+<table>
+  <thead class="thead-default table-header">
+    <tr>
+      <th scope="col">Horodatage</th>
+      <th scope="col">Type</th>
+      <th scope="col">De</th>
+      <th scope="col">Vers</th>
+      <th scope="col">Reference</th>
+      <th scope="col">Quantite</th>
+      <th scope="col">Poids</th>
+      <th scope="col">Statut Douanier</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let mouvement of mouvements">
+      <td>{{mouvement.dateCreation}}</td>
+      <td>{{mouvement.typeMouvement}} </td>
+      <td>{{mouvement.magasinOrigine}}</td>
+      <td>{{mouvement.magasinDestination}}</td>
+      <td>{{mouvement.infosMarchandise.typeReference}} {{mouvement.infosMarchandise.reference}}</td>
+      <td>{{mouvement.infosMarchandise.quantite}}</td>
+      <td>{{mouvement.infosMarchandise.poids}}</td>
+      <td>{{mouvement.statutDouanier}}</td>
+    </tr>
+    
+    
+   
+
+  </tbody>
+</table>

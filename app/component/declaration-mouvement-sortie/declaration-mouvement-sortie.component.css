@@ -1,0 +1,31 @@
+/* AppComponent's private CSS styles */
+.form-label{
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: lightblue;
+    display: inline-block;
+}
+
+.form-div{
+    margin-top:3px;
+    padding-top:9px;
+}
+
+.inp{
+    padding-left: 2cm;
+    margin-left: 10px;
+}
+
+.alert {
+    padding: 8px 35px 8px 14px;
+    margin-bottom: 18px;
+    color: #630c0c;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    background-color: #fa848e;
+    border: 1px solid #fbeed5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    max-width: 600px;
+    }
+  
