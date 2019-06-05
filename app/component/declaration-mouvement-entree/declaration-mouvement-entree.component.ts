@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { MouvementEntree } from 'src/app/entity/MouvementEntree';
 import { Mouvement } from 'src/app/entity/Mouvement';
 import { MouvementService } from 'src/app/service/mouvement.service';
 
@@ -10,7 +9,8 @@ import { MouvementService } from 'src/app/service/mouvement.service';
 @Component({
   selector: 'app-declaration-mouvement-entree',
   templateUrl: './declaration-mouvement-entree.component.html',
-  styleUrls: ['./declaration-mouvement-entree.component.css']
+  styleUrls: ['./declaration-mouvement-entree.component.css'],
+  providers: [MouvementService]
 })
 export class DeclarationMouvementEntreeComponent implements OnInit {
 
@@ -18,7 +18,7 @@ export class DeclarationMouvementEntreeComponent implements OnInit {
   form: FormGroup;
 
   /** Attributs du mouvement */
-  mouvementEntree: Mouvement;
+  mouvementEntree: Mouvement; 
   
   
   /** 
@@ -29,7 +29,8 @@ export class DeclarationMouvementEntreeComponent implements OnInit {
   poidsError: boolean = false;
   referenceError: boolean = false;
 
-  constructor(private formBuilder: FormBuilder
+  constructor(private formBuilder: FormBuilder,
+    private mouvementService: MouvementService
               ) {
 
     this.form = formBuilder.group({
@@ -58,14 +59,14 @@ export class DeclarationMouvementEntreeComponent implements OnInit {
     if(this.isValidForm()) {
       this.setMouvement()
       console.log(this.mouvementEntree);
-      // this.mouvementService.saveMouvementEntree(this.mouvementEntree).subscribe(
-      //   res => {
-      //     console.log(res);
-      //   },
-      //   error => {
-      //      console.log("ERROR on the backend server: " + error); 
-      //   }
-      // )
+      this.mouvementService.saveMouvementEntree(this.mouvementEntree).subscribe(
+        res => {
+          console.log(res);
+        },
+        error => {
+           console.log("ERROR on the backend server: " + error); 
+        }
+      )
     } else {
       console.log("INVALID FORM")
     }

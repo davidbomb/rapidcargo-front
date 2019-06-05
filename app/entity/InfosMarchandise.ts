@@ -1,4 +1,5 @@
 export class InfosMarchandise {
+    // id: number;
     typeReference: string;
     reference: string;
     quantite: number;

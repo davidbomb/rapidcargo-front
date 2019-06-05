@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { MouvementEntree } from '../entity/MouvementEntree';
 import { Mouvement } from '../entity/Mouvement';
 
 @Injectable({
@@ -18,7 +17,7 @@ export class MouvementService {
    * @param mouvement  
    */
   saveMouvementEntree(mouvement: Mouvement): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/api-rest/public/mouvements/entree' , mouvement);
+    return this.http.post<any>('http://localhost:8080/api-rest/mouvements/entree' , mouvement);
   }
 
   /** Saves a new mouvement Sortie 
@@ -26,7 +25,7 @@ export class MouvementService {
    * @param mouvement  
    */
   saveMouvementSortie(mouvement: Mouvement): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/api-rest/public/mouvements/sortie' , mouvement);
+    return this.http.put<any>('http://localhost:8080/api-rest/mouvements/sortie' , mouvement);
   }
 
   /**
@@ -35,7 +34,7 @@ export class MouvementService {
    * @return
    */
   getLastMouvements(): Observable<Mouvement[]> {
-    return this.http.get<Mouvement[]>('http://localhost:8080/api-rest/public/mouvements/last');
+    return this.http.get<Mouvement[]>('http://localhost:8080/api-rest/mouvements/last');
   }
 
   

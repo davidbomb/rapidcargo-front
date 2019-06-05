@@ -10,6 +10,7 @@ import { Mouvement2Service } from 'src/app/service/mouvement2.service';
   selector: 'app-declaration-mouvement-sortie',
   templateUrl: './declaration-mouvement-sortie.component.html',
   styleUrls: ['./declaration-mouvement-sortie.component.css'],
+  providers: [MouvementService]
 })
 export class DeclarationMouvementSortieComponent implements OnInit {
 
@@ -25,7 +26,8 @@ export class DeclarationMouvementSortieComponent implements OnInit {
   poidsError: boolean = false;
   referenceError: boolean = false;
 
-  constructor(private formBuilder: FormBuilder
+  constructor(private formBuilder: FormBuilder,
+    private mouvementService: MouvementService
               ) {
   
     this.form = formBuilder.group({
@@ -67,14 +69,14 @@ export class DeclarationMouvementSortieComponent implements OnInit {
     if(this.isValidForm()){
       this.setMouvement()
       console.log(this.mouvementSortie);
-      // this.mouvementService.saveMouvementSortie(this.mouvementSortie).subscribe(
-      //   res => {
-      //     console.log(res);
-      //   },
-      //   error => {
-      //      console.log("ERROR on the backend server: " + error); 
-      //   }
-      // )
+      this.mouvementService.saveMouvementSortie(this.mouvementSortie).subscribe(
+        res => {
+          console.log(res);
+        },
+        error => {
+           console.log("ERROR on the backend server: " + error); 
+        }
+      )
     }
   }
 
